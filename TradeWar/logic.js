@@ -6,30 +6,35 @@ function createFeaturesMilitaryExpGDP(dataM) {
   // Once we get a response, send the data.features object to the createFeatures function
   var countriesMilitaryExpGDP = L.geoJson(dataM, {
 
-    style: function(styleMilitaryExpGDP) {
-      return {
-        attribution: "XXMilitaryExpGDPXX",
-        color:  "magenta", // chooseColor(feature.properties.PlateName), // "white", 
-        opacity: .8,
-        // fillColor: getColorCountryM(militaryExpGDPData.features[177].properties.Military_exp_percentGDP), 
-        fillColor: getColorCountryM(dataM.features[0].properties.economy[0]),  // (countriesMilitaryExpGDP._layers[512].feature.properties.Military_exp_percentGDP)
-        fillOpacity: 0.6,
-        weight: 1,
-        // pointerEvents: 'none',
-        // zIndex: 650
-      };
+    // style: function(styleMilitaryExpGDP) {
+    //   return {
+    //     attribution: "XXMilitaryExpGDPXX",
+    //     color:  "magenta", // chooseColor(feature.properties.PlateName), // "white", 
+    //     opacity: .8,
+    //     // fillColor: getColorCountryM(militaryExpGDPData.features[177].properties.Military_exp_percentGDP), 
+    //     fillColor: getColorCountryM(dataM.features[0].properties.Military_exp_percentGDP),  // (dataM.features[0].properties.economy[0]),  // (countriesMilitaryExpGDP._layers[512].feature.properties.Military_exp_percentGDP)
+    //     // fillColor: getColorCountryM(dataM.features[0].properties.economy[0]), // countriesMilitaryExpGDP.properties.Military_exp_percentGDP
+    //     fillOpacity: 0.6,
+    //     weight: 1,
+    //     // pointerEvents: 'none',
+    //     // zIndex: 650
+    //   };
 
-      function getColorCountryM(d) {
-        return d > 7 ? '#99000d' :
-               d > 5.0  ? '#c51b8a' :
-               d > 3.0  ? '#f768a1' :
-               d > 2.0  ? '#fa9fb5' :
-               d > 1   ? '#fcc5c0' :
-                            '#feebe2'
-    } 
+    //   function getColorCountryM(d) {
+    //     return d > 7 ? '#99000d' :
+    //            d > 5.0  ? '#c51b8a' :
+    //            d > 3.0  ? '#f768a1' :
+    //            d > 2.0  ? '#fa9fb5' :
+    //            d > 1   ? '#fcc5c0' :
+    //                         '#feebe2'
+    // } 
 
-    }
+    // } 
   }); // .addTo(myMap);
+
+// setTimeout(function(){
+//     //do what you need here
+//   }, 2000);
 
   const link4 = "TradeWar/data/WarData/convertMilExpGDP.json";
   var countriesMXGG  = [];
@@ -39,44 +44,33 @@ function createFeaturesMilitaryExpGDP(dataM) {
   
   countriesMXGG = (Object.values(countriesMXGG));
   // return countriesMXGG,
-  // console.dir(countriesMXGG[1][0].properties.Military_exp_percentGDP),
-  // console.dir(countriesMXGG[1][1].properties),
+console.log(countriesMXGG);
   var tempp = [];
-  var geotemp = [];
+  // var geotemp = [];
   // tempp.push(countriesMXGG[1][0].properties.Military_exp_percentGDP);
   // console.log(tempp);
   var layers_num = countriesMXGG;
-  console.log(layers_num[1].length);
+  // console.log(layers_num[1].length);
   for (var i = 0; i < layers_num[1].length; i++) {
     tempp.push(countriesMXGG[1][i].properties.Military_exp_percentGDP);
   };
-  console.log(tempp);
-  // geotemp.push(countriesMilitaryExpGDP._layers[285].feature.properties.Military_exp_percentGDP);
+  // console.log(tempp);
   countriesMilitaryExpGDP._layers[285].feature.properties.Military_exp_percentGDP = (0.906856941);
- 
-  // console.log(countriesMilitaryExpGDP._layers[287].feature.properties.Military_exp_percentGDP);
-  // console.log(countriesMilitaryExpGDP._layers[285].feature.properties);
 
-  var geo_layers_num = countriesMilitaryExpGDP._layers;
-  // console.log(geo_layers_num);
+  // var geo_layers_num = countriesMilitaryExpGDP._layers;
+
   for (var i = 287; i < 463; i++) {
-    // geotemp.push(countriesMilitaryExpGDP._layers[i].feature.properties.Military_exp_percentGDP);
     countriesMilitaryExpGDP._layers[i].feature.properties.Military_exp_percentGDP = (tempp[i+1-287]);
-    // console.log( countriesMilitaryExpGDP._layers[285].feature.properties.Military_exp_percentGDP);
-    console.log( countriesMilitaryExpGDP._layers[i].feature.properties.Military_exp_percentGDP);
+    // console.log( countriesMilitaryExpGDP._layers[i].feature.properties.Military_exp_percentGDP);
   };
-  console.log( countriesMilitaryExpGDP._layers[420].feature.properties.Military_exp_percentGDP );
 
 }); 
-
-    // for (var i = 0; i < layers_num[1].length; i++) {
-    //   //   // console.log(data.features[i].properties.pop_est);
-    //     colorPop = data.features[i].properties.pop_est;
-    // }
+console.log(countriesMilitaryExpGDP);
 
   return countriesMilitaryExpGDP
-// })  
+
 }
+
 
 ////// THis is the Plates layer   ///////////////////////////////////////////////////////////////////////
 // var link = "TradeWar/data/PB2002_plates.json";
@@ -244,23 +238,23 @@ var ytd = new Date(ytd)
 var date = ytd.toString();
 
 var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime="+
-`${year-1}-${month}-${day}`+"&endtime=" +
-`${year}-${month}-${day}`+"&maxlongitude=180&minlongitude=-180&maxlatitude=70&minlatitude=-70&minmagnitude=7.0"; 
+                `${year-1}-${month}-${day}`+"&endtime=" +
+                `${year}-${month}-${day}`+"&maxlongitude=180&minlongitude=-180&maxlatitude=70&minlatitude=-70&minmagnitude=6.91"; 
     // Perform a GET request to the query URL
-  d3.json(queryUrl, function(data) {
-    // Once we get a response, send the data.features object to the createFeatures function
-    var earthquakes =  createFeatures(data.features);
+    d3.json(queryUrl, function(data) {
+      // Once we get a response, send the data.features object to the createFeatures function
+      var earthquakes =  createFeatures(data.features);
     
-    // var countryCoordsLink = "TradeWar/data/countriesGEO.json";  
-    var countryCoordsLink = "TradeWar/data/TradeData/TradeData_geo.json";
+      // var countryCoordsLink = "TradeWar/data/countriesGEO.json";  
+      var countryCoordsLink = "TradeWar/data/TradeData/TradeData_geo.json";
     d3.json(countryCoordsLink, function(data) {
       // Once we get a response, send the data.features object to the createFeatures function
-      var countryMarkers = createFeaturesMarkers(data.features);
+        var countryMarkers = createFeaturesMarkers(data.features);
 
-    // var link3 = "TradeWar/data/WarData/map.geojson";  
-    var link3 = "TradeWar/data/WarData/map4.geojson";  
+      // var link3 = "TradeWar/data/WarData/map.geojson";  
+        var link3 = "TradeWar/data/WarData/map6.geojson";  
 
-      d3.json(link3, function(dataM) {
+    d3.json(link3, function(dataM) {
         // Once we get a response, send the data.features object to the createFeatures function
         var countriesMilitaryExpGDP  = createFeaturesMilitaryExpGDP(dataM);
         // console.log(countriesMilitaryExpGDP._layers[512].feature.properties.Military_exp_percentGDP);
@@ -274,10 +268,10 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
 /////////// TEST CODE ///////////////////////////////
 /////////// TEST CODE ///////////////////////////////
 
-const countriesMXG  = [];
-countriesMXG.push(countriesMilitaryExpGDP); 
-console.log(countriesMXG);
-console.log(countriesMilitaryExpGDP);
+// const countriesMXG  = [];
+// countriesMXG.push(countriesMilitaryExpGDP); 
+// console.log(countriesMXG);
+// console.log(countriesMilitaryExpGDP);
 
 // var countriesMXGGeo  = [];
 // L.geoJson(countriesMXGG, {
@@ -322,8 +316,9 @@ console.log(countriesMilitaryExpGDP);
 /// This is the Countries Choropleth Layer currently shows the Population Est ////////////////////////////////
   // var link2 = "TradeWar/data/ne_10m_admin_0_countries.geojson";
   // var link2 = "TradeWar/data/customLO.geo.json";
-  var link2 = "TradeWar/data/countries_admn-0.geojson";
-  // var link2 = "TradeWar/data/WarData/map.geojson";
+  // var link2 = "TradeWar/data/countries_admn-0.geojson";
+  // var link2 = "TradeWar/data/worldDataGeo.json";
+  var link2 = "TradeWar/data/json_Merge/NEW.json";  
 
   d3.json(link2, function(data) {
 
@@ -331,6 +326,7 @@ console.log(countriesMilitaryExpGDP);
     //   //   // console.log(data.features[i].properties.pop_est);
     //     colorPop = data.features[i].properties.pop_est;
     // }
+console.log(data.features);
 
     // Once we get a response, send the data.features object to the createFeatures function
     var countries = L.geoJson(data, {
@@ -343,7 +339,7 @@ console.log(countriesMilitaryExpGDP);
           user: "JONAH",
           color:  "red", // chooseColor(feature.properties.PlateName), // "white", 
           opacity: .8,
-          fillColor: getColorCountry(countries.properties.pop_est),
+          fillColor: getColorCountry(countries.properties.pop_est ),   /// (countries.properties.GDP_per_Capita_PPP), 
           fillOpacity: 0.6,
           weight: 1,
           // pointerEvents: 'none',
@@ -360,6 +356,7 @@ console.log(countriesMilitaryExpGDP);
                  d > 10000000   ? '#FED976' :
                               '#FFEDA0'
       } 
+
       },
     
     }); 
@@ -520,6 +517,7 @@ displayInfo.update = function(props) {
         '<b>' + ' GDP in Billions of USD: ' + '</b>' + props.gdp_md_est / 1000 + '<br />' +
         '<b>' + 'Economic Status: ' + '</b>' + props.economy + '<br />' +
         '<b>' + 'Population: ' + '</b>' + props.pop_est / 1000000 + ' million people' + '<br />' +
+        '<b>' + 'Religion: ' + '</b>' + props.Religion + '<br />' +
         '<b>' + 'CONFLICT: ' + '</b>' + conflictInfo()  + '<br />' +'💀 2019 Deaths: '+conflictDead() + '<br />' :
         // '<b>' + 'Conflict: ' + '</b>' + (conflictZones.includes(props.name) ? 'On ' : 'Off ') + conflictZones[0] + ' DEATHS YTD' :
         'Hover over a country');   
@@ -582,7 +580,7 @@ d3.json(conflicts, function(data) {
         37.09, -70.00
       ],
       zoom: 3,
-      layers: [darkmap, countriesMilitaryExpGDP]  // , earthquakes, countriesGDP, countryMarkers]
+      layers: [darkmap, countries]  // , earthquakes, countriesGDP, countryMarkers, countriesMilitaryExpGDP]
     });
 
 function zoomToCountry(e) {
@@ -601,11 +599,11 @@ function onEachFeature(feature, layer) {
 //// Create overlay object to hold our overlay layer //////////////////////////////////////////////////////
     var overlayMaps = {
       Countries_POP: countries,
-      Plates: plates,
-      // Earthquakes_YTD: earthquakes,
       Countries_GDP: countriesGDP,
       CountryMarkers: countryMarkers,
-      CountryMilitaryExpGDP: countriesMilitaryExpGDP
+      CountryMilitaryExpGDP: countriesMilitaryExpGDP,
+      Plates: plates,
+      Earthquakes_YTD: earthquakes,
     };
   
     L.control.layers(baseMaps, overlayMaps,  {
