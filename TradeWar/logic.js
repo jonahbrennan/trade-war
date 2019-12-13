@@ -316,9 +316,9 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
 /// This is the Countries Choropleth Layer currently shows the Population Est ////////////////////////////////
   // var link2 = "TradeWar/data/ne_10m_admin_0_countries.geojson";
   // var link2 = "TradeWar/data/customLO.geo.json";
-  // var link2 = "TradeWar/data/countries_admn-0.geojson";
+  var link2 = "TradeWar/data/countries_admn-0.geojson";
   // var link2 = "TradeWar/data/worldDataGeo.json";
-  var link2 = "TradeWar/data/json_Merge/NEW.json";  
+  // var link2 = "TradeWar/data/json_Merge/NEW.json";  
 
   d3.json(link2, function(data) {
 
