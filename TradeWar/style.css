@@ -47,10 +47,10 @@ html {
 
 .legend {
   width: 110px;
-  line-height: 18px;
+  line-height: 19px;
   color: #555;
 }
-.legend i {
+i {
   width: 18px;
   height: 18px;
   float: left;
