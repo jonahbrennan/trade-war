@@ -243,7 +243,7 @@ console.log(yearS, month, day, d);
 
 var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime="+
                 `${yearS}-${month}-${day}`+"&endtime=" +
-                `${yearE}-${month}-${day}`+"&maxlongitude=180&minlongitude=-180&maxlatitude=70&minlatitude=-70&minmagnitude=6.91"; 
+                `${yearE}-${month}-${day}`+"&maxlongitude=180&minlongitude=-180&maxlatitude=70&minlatitude=-70&minmagnitude=6"; 
     // Perform a GET request to the query URL
     d3.json(queryUrl, function(data) {
       // Once we get a response, send the data.features object to the createFeatures function
@@ -527,7 +527,7 @@ displayInfo.update = function(props) {
         '<b>' + 'Population: ' + '</b>' + props.pop_est / 1000000 + ' million people' + '<br />' +
         '<b>' + 'Religion: ' + '</b>' + props.Religion + '<br />' +
         '<b>' + 'Oil TOE: ' + '</b>' + props.Thousand_TOE + '<br />' +
-        '<b>' + 'Military Expenditures per GDP: ' + '</b>' + props.Military_exp_percentGDP + '<br />' + 
+        '<b>' + 'Military Expense per GDP: ' + '</b>' + props.Military_exp_percentGDP + '<br />' + 
         '<b>' + 'CONFLICT: ' + '</b>' + conflictInfo()  + '<br />' +'💀 2019 Deaths: '+conflictDead() + '<br />' :
         // '<b>' + 'Conflict: ' + '</b>' + (conflictZones.includes(props.name) ? 'On ' : 'Off ') + conflictZones[0] + ' DEATHS YTD' :
         'Hover over a country');   
@@ -608,19 +608,19 @@ function onEachFeature(feature, layer) {
 
 //// Create overlay object to hold our overlay layer //////////////////////////////////////////////////////
     var overlayMaps = {
-      Countries_POP: countries,
+      Countries_Population: countries,
       Countries_GDP: countriesGDP,
-      CountryMilitaryExpGDP: countriesMilitaryExpGDP,
+      MilitaryExpense_percentGDP: countriesMilitaryExpGDP,
       CountryMarkers: countryMarkers,
       Plates: plates,
-      EarthquakesYTD_Over69: earthquakes,
+      EarthquakesYTD_overMag6: earthquakes
     };
   
     L.control.layers(baseMaps, overlayMaps,  {
       collapsed: false
     }).addTo(myMap);
 
-    displayInfo.addTo(myMap);   //////////////////////////
+    displayInfo.addTo(myMap);   ////////////////////////// DisplaInfo BOX ///////////////////////////////
 
 ////////////////////////////////////////////
 ////////// LEGEND /////////////////////////////
@@ -633,7 +633,10 @@ function onEachFeature(feature, layer) {
                         'blue';
   }
   
-  var legend = L.control({position: 'bottomright'});
+  var legend = L.control({
+    position: 'bottomright',
+    // collapsed: true
+    });
   
   legend.onAdd = function (map) {
 
@@ -652,7 +655,18 @@ function onEachFeature(feature, layer) {
       return div;
   };
   
-  legend.addTo(myMap);
+  console.log(myMap.options.layers[1]._events.add[0].ctx._layers[7].overlay);
+  console.log(myMap.options.layers[1]._events.add[0].ctx._layerControlInputs[7]);
+  console.log(legend.options);
+
+  if (myMap.options.layers[1]._events.add[0].ctx._layerControlInputs[7].checked == true){
+    legend.addTo(myMap)
+  };
+
+  // L.control.layers(legend, {
+  //   position: 'bottomright',
+  //   collapsed: true
+  // }).addTo(myMap);
 
   })   ///////////////////   Old Plates layer position bracket but now line 213 countries geojson  ///////////////
 
