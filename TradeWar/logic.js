@@ -663,10 +663,12 @@ function onEachFeature(feature, layer) {
   //   legend.addTo(myMap)
   // };
 
-  L.control.layers(legend, {
-    position: 'bottomright',
-    collapsed: true
-  }).addTo(myMap);
+  // L.control.layers(legend, {
+  //   position: 'bottomright',
+  //   collapsed: true
+  // }).addTo(myMap);
+  legend.addTo(myMap);
+
 
   })   ///////////////////   Old Plates layer position bracket but now line 213 countries geojson  ///////////////
 
