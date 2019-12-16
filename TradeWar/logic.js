@@ -655,18 +655,18 @@ function onEachFeature(feature, layer) {
       return div;
   };
   
-  console.log(myMap.options.layers[1]._events.add[0].ctx._layers[7].overlay);
-  console.log(myMap.options.layers[1]._events.add[0].ctx._layerControlInputs[7]);
-  console.log(legend.options);
+  // console.log(myMap.options.layers[1]._events.add[0].ctx._layers[7].overlay);
+  // console.log(myMap.options.layers[1]._events.add[0].ctx._layerControlInputs[7]);
+  // console.log(legend.options);
 
-  if (myMap.options.layers[1]._events.add[0].ctx._layerControlInputs[7].checked == true){
-    legend.addTo(myMap)
-  };
+  // if (myMap.options.layers[1]._events.add[0].ctx._layerControlInputs[7].checked == true){
+  //   legend.addTo(myMap)
+  // };
 
-  // L.control.layers(legend, {
-  //   position: 'bottomright',
-  //   collapsed: true
-  // }).addTo(myMap);
+  L.control.layers(legend, {
+    position: 'bottomright',
+    collapsed: true
+  }).addTo(myMap);
 
   })   ///////////////////   Old Plates layer position bracket but now line 213 countries geojson  ///////////////
 
