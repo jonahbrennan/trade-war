@@ -403,5 +403,25 @@
         "country": "Angola",
         "name_of_conflict": "Kamwina Nsapu Rebellion",
         "num_deaths_2019": 0
+    },
+    {
+        "country": "United States",
+        "name_of_conflict": "War in Afghanistan (2001-present)",
+        "num_deaths_2019": 35941
+    },
+    {
+        "country": "United States",
+        "name_of_conflict": "War in North-West Pakistan (2004–present)",
+        "num_deaths_2019": 736
+    },
+    {
+        "country": "United States",
+        "name_of_conflict": "2nd U.S. Intervention Somali Civil War (2007–present)",
+        "num_deaths_2019": 3862
+    },
+    {
+        "country": "United States",
+        "name_of_conflict": "American-led intervention in Syria (2014–present)",
+        "num_deaths_2019": 23000
     }
 ]

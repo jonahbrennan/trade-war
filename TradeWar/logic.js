@@ -163,10 +163,9 @@ function createFeatures(earthquakeData) {
       d3.json(conflicts, function(dataC) {
         conflictZones = dataC.map(dataC => dataC.country);
         // console.log(conflictZones[0]);
-
         return conflictZones
        } );
-      //  console.log(conflictZones[0]);
+       
 
 /// This is the Flag Markers layer  ////////////////////////////////////////////////////////////////////////
 function createFeaturesMarkers(countryMarkersData) {
@@ -258,7 +257,7 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
       // var link3 = "TradeWar/data/WarData/map.geojson";  
         // var link3 = "TradeWar/data/WarData/map6.geojson";  
         // var link3 = "TradeWar/data/json_Merge/NEW1.json";  
-        var link3 = "TradeWar/data/WarData/map8.geojson";  
+        var link3 = "TradeWar/data/WarData/map9.geojson";  
 
 
     d3.json(link3, function(dataM) {
@@ -326,7 +325,7 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
   // var link2 = "TradeWar/data/countries_admn-0.geojson";
   // var link2 = "TradeWar/data/worldDataGeo.json";
   // var link2 = "TradeWar/data/json_Merge/NEW1.json";  
-  var link2 = "TradeWar/data/WarData/map8.geojson";  
+  var link2 = "TradeWar/data/WarData/map9.geojson";  
 
 
   d3.json(link2, function(data) {
@@ -494,7 +493,7 @@ displayInfo.update = function(props) {
     for(var i = 0; i < conflictNames.length; i++) { 
 
       if ( conflictNames[i].country === props.name && temp.length <= 2 ) { temp.push(conflictNames[i].name_of_conflict)};
-      if ( conflictNames[i].country === props.name && temp2.length < 9 ) { temp2.push(conflictNames[i].name_of_conflict)};
+      if ( conflictNames[i].country === props.name && temp2.length < 12 ) { temp2.push(conflictNames[i].name_of_conflict)};
     } 
     if (temp2.length > 2 ) {
       temp = temp2+"🔥💣🔥";
