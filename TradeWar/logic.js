@@ -317,21 +317,36 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
   var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 18,
-    id: "mapbox.satellite",
+    id: "mapbox.outdoors",
+    // style: "mapbox://styles/tacticalartist/ck4dvh8l706is1cpjzco06l8g",
     accessToken: API_KEY
   });
 
+  var piratemap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.pirates",
+    // style: "mapbox://styles/mapbox/navigation-preview-day-v4",
+    accessToken: API_KEY
+  });
   var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 18,
     id: "mapbox.dark",
     accessToken: API_KEY
   });
-
+  var satmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.satellite",
+    accessToken: API_KEY
+  });
   // Define a baseMaps object to hold our base layers
   var baseMaps = {
     "Street Map": streetmap,
-    "Dark Map": darkmap
+    "Dark Map": darkmap,
+    "Satellite Map": satmap,
+    "Pirates": piratemap
   };
 
 /// This is the Countries Choropleth Layer currently shows the Population Est ////////////////////////////////
@@ -410,7 +425,6 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
                  d > 200000  ? '#99d8c9' :
                  d > 700   ? '#ccece6' :
                               '#edf8fb'
-
       } 
       },
     });
@@ -464,17 +478,14 @@ var countriesThousand_TOE = L.geoJson(dataTOE, {
     }
 
     function getColorCountry2(d) {
-        return d > 480000 ? 'rgba(6, 0, 26, 0.6)' :
-               d > 100000  ? 'rgba(9, 0, 88, 0.6)' :
-               d >= 10  ? 'rgba(16, 0, 165, 0.6)' : 0
+        return d > 480000 ? 'rgba(22, 0, 26, 0.7)' :
+               d > 100000  ? 'rgba(12, 0, 70, 0.7)' :
+               d >= 10  ? 'rgba(10, 0, 100, 0.7)' : 0
     }
 
   },
   
 });
-
-
-
 
 
 function reset(e) {
@@ -636,10 +647,10 @@ d3.json(conflicts, function(data) {
     var myMap = L.map("map", {
       worldCopyJump: true,
       center: [
-        37.09, -70.00
+        30, -10.00
       ],
       zoom: 3,
-      layers: [darkmap, countriesThousand_TOE]  // countries, earthquakes, countriesGDP, countryMarkers, countriesMilitaryExpGDP]
+      layers: [piratemap, countriesMilitaryExpGDP, countriesThousand_TOE ]  // countries, earthquakes, countriesGDP, countryMarkers, countriesMilitaryExpGDP]
     });
 
 function zoomToCountry(e) {
