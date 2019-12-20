@@ -65,10 +65,21 @@ function createFeaturesMilitaryExpGDP(dataM) {
 //   // };
 
 // })
-console.log(countriesMilitaryExpGDP);
+// console.log(countriesMilitaryExpGDP);
 
   return countriesMilitaryExpGDP
 
+}
+
+////// THis is the countriesThousand_TOE  layer   ///////////////////////////////////////////////////////////////////////
+// var countriesThousand_TOE = [];
+function createFeaturesThousand_TOE(dataTOE) {
+
+  var countriesThousand_TOE = L.geoJson(dataTOE, {
+
+  });
+
+  return countriesThousand_TOE
 }
 
 
@@ -269,7 +280,11 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
         console.log("countryMarkers Object: ", Object.entries(countryMarkers));
         // console.log(Object.entries(countries));
 
-      
+    d3.json(link3, function(dataTOE) {
+        // Once we get a response, send the data.features object to the createFeatures function
+        var countriesThousand_TOE  = createFeaturesThousand_TOE(dataTOE);
+  
+        
 /////////// TEST CODE ///////////////////////////////
 /////////// TEST CODE ///////////////////////////////
 /////////// TEST CODE ///////////////////////////////
@@ -430,6 +445,36 @@ var countriesMilitaryExpGDP = L.geoJson(dataM, {
   
 });
 
+/// This is the CountriesThousand_TOE  Choropleth Layer  ////////////////////////////////
+var countriesThousand_TOE = L.geoJson(dataTOE, {
+      
+  onEachFeature: onEachFeature,
+
+  style: function(colorStyle) {
+
+    return {
+      attribution: "XXCountriesThousand_TOEXX",
+      color:  "black", // chooseColor(feature.properties.PlateName), // "white", 
+      opacity:  .6,
+      fillColor: getColorCountry2(colorStyle.properties.Thousand_TOE),
+      fillOpacity: getColorCountry2(colorStyle.properties.Thousand_TOE),
+      weight: 1,
+      // pointerEvents: 'none',
+      // zIndex: 650
+    }
+
+    function getColorCountry2(d) {
+        return d > 480000 ? 'rgba(6, 0, 26, 0.6)' :
+               d > 100000  ? 'rgba(9, 0, 88, 0.6)' :
+               d >= 10  ? 'rgba(16, 0, 165, 0.6)' : 0
+    }
+
+  },
+  
+});
+
+
+
 
 
 function reset(e) {
@@ -449,8 +494,11 @@ console.log("XpopulationX");
 } else if (e.target.options.attribution === "XXMilitaryExpGDPXX") {
   console.log("XXMilitaryExpGDPXX");
   countriesMilitaryExpGDP.resetStyle(e.target);
-}
 
+} else if (e.target.options.attribution === "XXCountriesThousand_TOEXX") {
+  console.log("XXCountriesThousand_TOEXX");
+  countriesThousand_TOE.resetStyle(e.target);
+}
 
   // console.log(e.target.options.color);
   displayInfo.update();
@@ -577,6 +625,8 @@ d3.json(conflicts, function(data) {
       layer.bringToFront();
   }
   console.log((e.target.feature.properties.Military_exp_percentGDP));
+  console.log((e.target.feature.properties.Thousand_TOE));
+  
   displayInfo.update(layer.feature.properties);
 }
 
@@ -589,7 +639,7 @@ d3.json(conflicts, function(data) {
         37.09, -70.00
       ],
       zoom: 3,
-      layers: [darkmap, countries]  // , earthquakes, countriesGDP, countryMarkers, countriesMilitaryExpGDP]
+      layers: [darkmap, countriesThousand_TOE]  // countries, earthquakes, countriesGDP, countryMarkers, countriesMilitaryExpGDP]
     });
 
 function zoomToCountry(e) {
@@ -610,6 +660,7 @@ function onEachFeature(feature, layer) {
       Countries_Population: countries,
       Countries_GDP: countriesGDP,
       MilitaryExpense_percentGDP: countriesMilitaryExpGDP,
+      Countries_TonnesOil_EXP: countriesThousand_TOE,
       CountryMarkers: countryMarkers,
       Plates: plates,
       EarthquakesYTD_overMag6: earthquakes
@@ -674,7 +725,7 @@ function onEachFeature(feature, layer) {
 })
     
 })
-
+})
 // }) DEPRECATED  earthquakes2015  closing bracket
 
 }) 
