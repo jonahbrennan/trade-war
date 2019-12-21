@@ -268,7 +268,7 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
       // var link3 = "TradeWar/data/WarData/map.geojson";  
         // var link3 = "TradeWar/data/WarData/map6.geojson";  
         // var link3 = "TradeWar/data/json_Merge/NEW1.json";  
-        var link3 = "TradeWar/data/WarData/map9.geojson";  
+        var link3 = "TradeWar/data/WarData/map10.geojson";  
 
 
     d3.json(link3, function(dataM) {
@@ -355,7 +355,7 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
   // var link2 = "TradeWar/data/countries_admn-0.geojson";
   // var link2 = "TradeWar/data/worldDataGeo.json";
   // var link2 = "TradeWar/data/json_Merge/NEW1.json";  
-  var link2 = "TradeWar/data/WarData/map9.geojson";  
+  var link2 = "TradeWar/data/WarData/map10.geojson";  
 
 
   d3.json(link2, function(data) {
@@ -479,8 +479,8 @@ var countriesThousand_TOE = L.geoJson(dataTOE, {
 
     function getColorCountry2(d) {
         return d > 480000 ? 'rgba(22, 0, 26, 0.7)' :
-               d > 100000  ? 'rgba(12, 0, 70, 0.7)' :
-               d >= 10  ? 'rgba(10, 0, 100, 0.7)' : 0
+               d > 100000  ? 'rgba(0, 15, 61, 0.7)' :
+               d >= 10  ? 'rgba(40, 91, 138, 0.7)' : 0
     }
 
   },
@@ -650,7 +650,7 @@ d3.json(conflicts, function(data) {
         30, -10.00
       ],
       zoom: 3,
-      layers: [piratemap, countriesMilitaryExpGDP, countriesThousand_TOE ]  // countries, earthquakes, countriesGDP, countryMarkers, countriesMilitaryExpGDP]
+      layers: [darkmap, countriesMilitaryExpGDP, countriesThousand_TOE ]  // countries, earthquakes, countriesGDP, countryMarkers, countriesMilitaryExpGDP]
     });
 
 function zoomToCountry(e) {
