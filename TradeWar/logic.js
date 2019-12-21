@@ -478,8 +478,8 @@ var countriesThousand_TOE = L.geoJson(dataTOE, {
     }
 
     function getColorCountry2(d) {
-        return d > 480000 ? 'rgba(22, 0, 26, 0.7)' :
-               d > 100000  ? 'rgba(0, 15, 61, 0.7)' :
+        return d > 470000 ? 'rgba(22, 0, 26, 0.7)' :
+               d > 130000  ? 'rgba(0, 15, 61, 0.7)' :
                d >= 10  ? 'rgba(40, 91, 138, 0.7)' : 0
     }
 
@@ -670,8 +670,8 @@ function onEachFeature(feature, layer) {
     var overlayMaps = {
       Countries_Population: countries,
       Countries_GDP: countriesGDP,
-      MilitaryExpense_percentGDP: countriesMilitaryExpGDP,
-      Countries_TonnesOil_EXP: countriesThousand_TOE,
+      MilitarySpend_PercentGDP: countriesMilitaryExpGDP,
+      Oil_Exports_Tons_2017: countriesThousand_TOE,
       CountryMarkers: countryMarkers,
       Plates: plates,
       EarthquakesYTD_overMag6: earthquakes
