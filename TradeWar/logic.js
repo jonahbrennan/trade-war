@@ -268,7 +268,7 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
       // var link3 = "TradeWar/data/WarData/map.geojson";  
         // var link3 = "TradeWar/data/WarData/map6.geojson";  
         // var link3 = "TradeWar/data/json_Merge/NEW1.json";  
-        var link3 = "TradeWar/data/WarData/map9.geojson";  
+        var link3 = "TradeWar/data/WarData/map10.geojson";  
 
 
     d3.json(link3, function(dataM) {
@@ -355,7 +355,7 @@ var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&
   // var link2 = "TradeWar/data/countries_admn-0.geojson";
   // var link2 = "TradeWar/data/worldDataGeo.json";
   // var link2 = "TradeWar/data/json_Merge/NEW1.json";  
-  var link2 = "TradeWar/data/WarData/map9.geojson";  
+  var link2 = "TradeWar/data/WarData/map10.geojson";  
 
 
   d3.json(link2, function(data) {
